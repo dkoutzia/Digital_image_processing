@@ -1,6 +1,6 @@
 # Digital Image Processing – OCR using Fourier Descriptors
 
-This repository contains my implementation for the second assignment of the *Digital Image Processing* course at :contentReference[oaicite:0]{index=0}. The project focuses on Optical Character Recognition (OCR) using classical image processing techniques, contour extraction, Fourier descriptors, and character classification. :contentReference[oaicite:1]{index=1}
+This repository contains my implementation for the second assignment of the Digital Image Processing course. The project focuses on Optical Character Recognition (OCR) using classical image processing techniques, contour extraction, Fourier descriptors, and character classification.
 
 ## Project Overview
 
@@ -29,15 +29,11 @@ The function `findRotationAngle()` estimates the skew angle of a text image usin
 - frequency spectrum analysis,
 - serial search refinement based on brightness projections.
 
-:contentReference[oaicite:2]{index=2}
-
 ---
 
 ### Image Rotation
 
 The function `rotateImage()` rotates and pads the image so the text can be aligned correctly before segmentation.
-
-:contentReference[oaicite:3]{index=3}
 
 ---
 
@@ -45,15 +41,11 @@ The function `rotateImage()` rotates and pads the image so the text can be align
 
 The script `separate_lines.py` separates text lines using vertical projection histograms.
 
-:contentReference[oaicite:4]{index=4}
-
 ---
 
 ### Character Segmentation
 
 The function `separate_characters()` separates characters using horizontal projections on binary text images.
-
-:contentReference[oaicite:5]{index=5}
 
 ---
 
@@ -69,8 +61,6 @@ The function `getcontour()` extracts character contours using:
 
 The extracted contours are returned as coordinate arrays.
 
-:contentReference[oaicite:6]{index=6}
-
 ---
 
 ### Fourier Descriptors
@@ -83,8 +73,6 @@ The script `countour_descriptor.py` computes Fourier Descriptors from contour co
 
 Contour similarity is measured using Euclidean distance between descriptors.
 
-:contentReference[oaicite:7]{index=7}
-
 ---
 
 ### Dataset Creation
@@ -95,8 +83,6 @@ The script `create_dataset.py` generates datasets for OCR classification by:
 - interpolating descriptors to fixed lengths,
 - grouping characters according to contour count,
 - comparing descriptors between samples.
-
-:contentReference[oaicite:8]{index=8}
 
 ---
 
@@ -109,8 +95,6 @@ The `main.py` script demonstrates the complete workflow:
 - line separation,
 - character segmentation,
 - OCR preprocessing pipeline visualization.
-
-:contentReference[oaicite:9]{index=9}
 
 ---
 
