@@ -1,85 +1,101 @@
-**Digital Image Processing – RAW to RGB Conversion**
+# Digital Image Processing – RAW to RGB Conversion
 
-This repository contains the implementation of the first assignment for the course Digital Image Processing at Aristotle University of Thessaloniki. The project focuses on converting RAW .DNG images captured from Bayer-pattern RGB sensors into standard RGB images through a complete image processing pipeline.
+This repository contains the implementation of the first assignment for the Digital Image Processing course. The project focuses on converting RAW `.DNG` images captured from Bayer-pattern RGB sensors into standard RGB images through a complete image processing pipeline.
 
-**Project Overview**
-Modern digital cameras store sensor measurements in RAW format, where each pixel records only one color channel (R, G, or B) according to a Bayer filter arrangement. The goal of this project is to reconstruct a full RGB image from these RAW sensor measurements by implementing the core stages of the RAW development pipeline:
+## Project Overview
 
-Reading and preprocessing .DNG RAW files
-White balance correction
-Bayer demosaicing / interpolation
-Camera-to-XYZ color space conversion
-XYZ-to-sRGB conversion and gamma correction
+Modern digital cameras store sensor measurements in RAW format, where each pixel records only one color channel (R, G, or B) according to a Bayer filter arrangement.
 
-The implementation is written entirely in MATLAB without relying on built-in interpolation utilities.
+The goal of this project is to reconstruct a full RGB image from RAW sensor measurements by implementing the core stages of the RAW image development pipeline.
 
+The implemented pipeline includes:
+- Reading and preprocessing RAW `.DNG` images
+- White balance correction
+- Bayer demosaicing and interpolation
+- Camera-to-XYZ color space conversion
+- XYZ-to-sRGB conversion
+- Gamma correction
 
-**Implemented Functions**
+The implementation was developed entirely in MATLAB without relying on built-in interpolation utilities.
 
-readdng.m
+---
 
-Reads a .DNG image and extracts:
+## Implemented Components
 
-RAW sensor measurements
-White balance coefficients
-Camera color transformation matrix (XYZ2Cam)
+### RAW Image Reading
 
-The function also:
+The function `readdng.m` reads a `.DNG` image and extracts:
+- RAW sensor measurements
+- White balance coefficients
+- Camera color transformation matrix (`XYZ2Cam`)
 
-crops the useful sensor region,
-normalizes pixel intensities,
-maps black level → 0,
-maps white level → 1,
-clips out-of-range values.
+The preprocessing stage also:
+- Crops the useful sensor region
+- Normalizes pixel intensities
+- Maps black level values to `0`
+- Maps white level values to `1`
+- Clips out-of-range values
 
-dng2rgb.m
+---
 
-Converts the RAW Bayer image into RGB.
+### RAW to RGB Conversion
 
-Supported features:
+The function `dng2rgb.m` converts the RAW Bayer image into RGB format.
 
-Bayer patterns:
-BGGR
-GBRG
-GRBG
-RGGB
-Interpolation methods:
-nearest neighbor
-bilinear interpolation
+Supported Bayer patterns:
+- BGGR
+- GBRG
+- GRBG
+- RGGB
+
+Implemented interpolation methods:
+- Nearest Neighbor
+- Bilinear Interpolation
 
 The function produces:
+- Camera color space image
+- XYZ image
+- Linear RGB image
+- Final sRGB image
 
-Camera color space image
-XYZ image
-Linear RGB image
-Final sRGB image
+The processing pipeline also applies:
+- White balance correction
+- Color space transformations
+- Gamma correction
 
-It also applies:
+---
 
-white balance correction,
-color space transformations,
-gamma correction.
+## Demonstration
 
-**Demo**
+The script `demo.m` demonstrates the complete RAW-to-RGB reconstruction pipeline by:
+- Loading a RAW `.DNG` image
+- Reconstructing the RGB image
+- Visualizing intermediate and final outputs
+- Generating histograms for each color channel
 
-The script demo.m demonstrates the full pipeline using the provided RAW image:
+---
 
-loads the .DNG,
-reconstructs the RGB image,
-visualizes outputs,
-generates histograms for each color channel.
+## Technologies Used
 
-**Topics Covered**
-RAW image processing
-Bayer sensor interpolation
-Demosaicing
-White balance
-Color science
-XYZ and sRGB color spaces
-Image normalization
-Histogram analysis
+- MATLAB
+- LibTIFF Interface for MATLAB
+- RAW/DNG Image Processing
 
-**Technologies**
-MATLAB
-LibTIFF interface for MATLAB
-RAW/DNG image processing
+---
+
+## Topics Covered
+
+- RAW Image Processing
+- Bayer Sensor Interpolation
+- Demosaicing
+- White Balance
+- Color Science
+- XYZ and sRGB Color Spaces
+- Image Normalization
+- Histogram Analysis
+
+---
+
+## Notes
+
+This project focuses on implementing the fundamental stages of a digital camera RAW image processing pipeline and demonstrates the conversion of Bayer-pattern sensor data into visually correct RGB images.
